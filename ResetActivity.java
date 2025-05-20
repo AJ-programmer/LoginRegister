@@ -34,7 +34,7 @@ public class ResetActivity extends AppCompatActivity {
             username.setText(usernameValue);
         } else {
             Toast.makeText(ResetActivity.this, "Error: Username not received", Toast.LENGTH_SHORT).show();
-            finish(); // Return to previous activity if username is missing
+            finish();
             return;
         }
 
@@ -45,13 +45,10 @@ public class ResetActivity extends AppCompatActivity {
                 String pass = password.getText().toString();
                 String repass = repassword.getText().toString();
 
-                // Check if fields are empty
                 if (pass.equals("") || repass.equals("")) {
                     Toast.makeText(ResetActivity.this, "Please enter all fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                // Fix: Use equals() to compare strings instead of comparing the EditText objects
                 if (pass.equals(repass)) {
                     Boolean checkpasswordupdate = DB.updatePassword(user, pass);
 
